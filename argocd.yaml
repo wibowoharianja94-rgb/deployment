@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quiz-argo-cd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/QuizOnlineDevOps/deployment.git
+    targetRevision: HEAD
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: quiz-argo-cd
+  
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

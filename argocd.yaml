@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: quiz-argo-cd
+  name: catalog-argo-cd
   namespace: argocd
 spec:
   project: default
@@ -11,7 +11,7 @@ spec:
     path: dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: quiz-argo-cd
+    namespace: catalog-argo-cd
   
   syncPolicy:
     syncOptions:
